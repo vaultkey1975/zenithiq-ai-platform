@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ZenithIQ AI Assistant</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    pre {
+      background: #fff;
+      border: 1px solid #ccc;
+      padding: 16px;
+      white-space: pre-wrap;
+      word-break: break-word;
+      color: #333;
+    }
+    .error {
+      color: red;
+      font-weight: bold;
+    }
+    .warning {
+      color: orange;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>ZenithIQ AI Assistant</h1>
+  <p>Knowledge base is now loaded from external JavaScript file.</p>
+
+  <!-- Load external JS file (must be in same folder) -->
+  <script src="zenithiq-knowledge.js"></script>
+
+  <script>
+    window.addEventListener("load", function () {
+      try {
+        if (typeof ZENITHIQ_ULTIMATE_KNOWLEDGE === "undefined") {
+          throw new Error("ZENITHIQ_ULTIMATE_KNOWLEDGE is not defined.");
+        }
+
+        const pythonOverview = ZENITHIQ_ULTIMATE_KNOWLEDGE?.programming?.languages?.python?.overview;
+
+        if (pythonOverview) {
+          const output = document.createElement("pre");
+          output.textContent = pythonOverview;
+          document.body.appendChild(output);
+        } else {
+          const warning = document.createElement("p");
+          warning.className = "warning";
+          warning.textContent = "⚠️ Python overview not found in the knowledge base.";
+          document.body.appendChild(warning);
+        }
+
+      } catch (error) {
+        const errorMsg = document.createElement("p");
+        errorMsg.className = "error";
+        errorMsg.textContent = "❌ Error: " + error.message;
+        document.body.appendChild(errorMsg);
+        console.error(error);
+      }
+    });
+  </script>
+</body>
+</html>
