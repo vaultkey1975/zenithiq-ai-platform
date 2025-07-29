@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #252526;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3e3e42;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4e4e52;
+}
+
+/* CodeMirror custom styles */
+.cm-editor {
+  height: 100%;
+}
+
+.cm-focused {
+  outline: none;
+}
+
+/* Chat message styles */
+.chat-message {
+  @apply mb-4 p-3 rounded-lg;
+}
+
+.chat-message.user {
+  @apply bg-accent text-white ml-8;
+}
+
+.chat-message.assistant {
+  @apply bg-panel-bg text-text-primary mr-8;
+}
+
+/* Button styles */
+.btn-primary {
+  @apply bg-accent hover:bg-blue-600 text-white px-4 py-2 rounded-md transition-colors duration-200;
+}
+
+.btn-secondary {
+  @apply bg-panel-bg hover:bg-gray-600 text-text-primary px-4 py-2 rounded-md border border-border-color transition-colors duration-200;
+}
